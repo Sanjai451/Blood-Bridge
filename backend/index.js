@@ -6,6 +6,8 @@ import { User } from './models/User.js';
 import insertRouter from './routes/insertRecords.js';
 import getRouter from './routes/getRecords.js';
 import blank from './routes/blank.js';
+import cors from 'cors'
+import bodyParser from 'body-parser'
 dotenv.config()
  
 
@@ -13,6 +15,10 @@ dotenv.config()
 const port = process.env.PORT || 8000;
 const mongo_url = process.env.MONGO_URL
 const app = express()
+app.use(cors())
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded())
+app.use(express.json())
 
 //Connect mongodb
 mongoose.connect(mongo_url)

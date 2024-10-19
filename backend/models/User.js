@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   history: {
     type: mongoose.Schema.Types.ObjectId,  // Use Types.ObjectId
     ref: "Bank",

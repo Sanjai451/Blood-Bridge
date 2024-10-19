@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav className="bg-red-500 p-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <Link to='/' className="text-white text-xl font-bold"Blood Bridge>Blood Bridge</Link>
+        <Link to='/' className="text-white text-xl font-bold">Blood Bridge</Link>
         <div className="hidden md:flex space-x-4">
           <Link to="/" className="text-white hover:text-red-200">Home</Link>
           <Link to="/requestBlood" className="text-white hover:text-red-200">Request Blood</Link>
