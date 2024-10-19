@@ -24,8 +24,20 @@ function App() {
         <Route path='viewBlood' element={<ViewBlood/>}/>
         <Route path='camps' element={<Camps/>} />
         <Route path='profile' element={<Profile/>}/>
+        <Route path='camps' element={<Camps/>}/>
       </Routes>
     </Router>
+    <div className="text-center my-5">
+    <a 
+      href="https://your-portfolio-link.com" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="text-sm text-gray-500 hover:text-red-500 transition-colors duration-300"
+    >
+      Designed and Developed by Sanjai Kumar R 
+    </a>
+  </div>
+
     </>
   );
 }

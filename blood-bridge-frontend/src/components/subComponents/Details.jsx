@@ -1,15 +1,33 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
 
 const Details = ({request}) => {
+
+  // console.log(request)
+
   return (
     <div>
         <li key={request.id} className="bg-white p-6 my-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
         <div className="flex items-center justify-between">
             <div className="text-lg font-semibold text-gray-900">{request.name}</div>
-            <div className="text-sm font-medium text-gray-600">{request.bloodGroup}</div>
+            <div>
+            <p
+              className={`${
+                request.type === 'request-Blood' ? 'text-red-800' : 
+                request.type === 'blood-donor' ? 'text-green-500' : 
+                'text-gray-500'
+              }`}
+            >
+              {request.type}
+            </p>
+            <div className={request.bloodGroup && `text-sm font-bold bg-red-100 text-red-600 py-2 px-4 rounded-full shadow-md inline-block`}>
+              {request.bloodGroup}
+            </div>
+            </div>
         </div>
         <div className="mt-4">
             <p className="text-gray-700">Location: <span className="font-semibold">{request.location}</span></p>
+            <p className="text-gray-700">Posted on: <span className="font-semibold">{request.PostedOn}</span></p>
             <button className="mt-4 w-full bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600">
             View Details
             </button>

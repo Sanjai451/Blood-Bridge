@@ -17,6 +17,7 @@ const Navbar = () => {
           <Link to="/requestBlood" className="text-white hover:text-red-200">Request Blood</Link>
           <Link to="/donateBlood" className="text-white hover:text-red-200">Donate Blood</Link>
           <Link to="/viewBlood" className="text-white hover:text-red-200">Requests</Link>
+          <Link to="/camps" className="text-white hover:text-red-200">Camps</Link>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-white focus:outline-none">
@@ -32,6 +33,7 @@ const Navbar = () => {
           <Link to="/requestBlood" className="block text-white hover:text-red-200">Request Blood</Link>
           <Link to="/donateBlood" className="block text-white hover:text-red-200">Donate Blood</Link>
           <Link to="/viewBlood" className="block text-white hover:text-red-200">Requests</Link>
+          <Link to="/camps" className="block text-white hover:text-red-200">Camps</Link>
         </div>
       )}
     </nav>

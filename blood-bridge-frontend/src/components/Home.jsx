@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DonateBlood from './DonateBlood';
 import RequestBlood from './RequestBlood';
@@ -6,41 +6,48 @@ import ViewBlood from './ViewBlood';
 import Details from './subComponents/Details';
 import HomeIntroProfile from './subComponents/HomeIntroProfile';
 import DonorInfo from './subComponents/DonorInfo';
+import axios from 'axios';
 
 const Home = () => {
-  const recentRequests = [
-    { id: 1, name: 'John Doe', bloodGroup: 'O+', location: 'Chennai' },
-    { id: 2, name: 'Jane Smith', bloodGroup: 'A-', location: 'Bangalore' },
-    { id: 3, name: 'Mike Johnson', bloodGroup: 'B+', location: 'Delhi' }
-  ];
+  // const recentRequests = [
+  //   { id: 1, name: 'John Doe', bloodGroup: 'O+', location: 'Chennai' },
+  //   { id: 2, name: 'Jane Smith', bloodGroup: 'A-', location: 'Bangalore' },
+  //   { id: 3, name: 'Mike Johnson', bloodGroup: 'B+', location: 'Delhi' }
+  // ];
+
+  const [requestPost,setRequestPost] = useState([])
+  
+  useEffect(()=>{
+    fetchData()
+  },[requestPost])
+
+  const fetchData = async()=>{
+    try {
+      const response = await axios.get('http://localhost:8000/get')
+      // console.log(response.data)
+      setRequestPost(response.data)
+      // console.log(requestPost)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="max-w-4xl mx-auto p-6">
 
       {/* Profile Picture and Greeting */}
       <HomeIntroProfile/>
-
-      {/* Buttons for Donation and Request
-      <div className="flex space-x-4 mb-6 max-w-2xl my-10 mx-auto w-64 ">
-        <Link to="/donateBlood" element={DonateBlood}>
-          <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-            Donate Blood
-          </button>
-        </Link>
-        <Link to="/requestBlood" element={<RequestBlood/>}>
-          <button className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
-            Request Blood
-          </button>
-        </Link>
-      </div> */}
-
+      
       {/* Recent Blood Requests */}
       <div className="bg-gray-100 my-10 p-4 rounded shadow-md ">
         <h3 className="text-lg font-semibold mb-4">Recent Blood Requests</h3>
         <ul>
-          {recentRequests.map(request => (
-            <Details request={request}/>
-          ))}
+        {requestPost
+          .sort((a, b) => new Date(b.PostedOn) - new Date(a.PostedOn)) // Sort by PostedOn date (most recent first)
+          .slice(0, 3) // Adjust '5' to display the number of recent posts you want to show
+          .map((request) => (
+            <Details key={request.id} request={request} />
+        ))}
         </ul>
         <Link to="/viewBlood" element={<ViewBlood/>} >
           <button className="mt-4 bg-gray-300 text-gray-700 py-1 px-2   rounded hover:bg-gray-400">
