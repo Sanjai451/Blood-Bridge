@@ -1,22 +1,37 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const RequestBlood = () => {
   const [requester, setRequester] = useState({
-    name: '',
+    name: '', // New field for contact person's name
     bloodGroup: '',
+    age : 0,
     requiredUnits: '',
     contact: '',
-    location: ''
+    location: '',
+    address: '', // New field for address
+    date: '', // New field for date
+    type: 'Blood-request'
   });
 
   const handleChange = (e) => {
     setRequester({ ...requester, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to backend)
     console.log('Blood Request Details:', requester);
+    try{
+        const response = await axios.post(`http://localhost:8000/requestBlood`,requester)
+        if(response.status == 200){
+          console.log(response)
+        }else{
+          alert('Not sent to Backend Try again!!');
+        }
+    }catch(err){
+      console.log(err)
+    }
     alert('Your blood request has been submitted!');
   };
 
@@ -28,12 +43,25 @@ const RequestBlood = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name Input */}
         <div>
-          <label htmlFor="name" className="block text-lg font-medium mb-2">Full Name</label>
+          <label htmlFor="name" className="block text-lg font-medium mb-2">Your Full Name</label>
           <input
             type="text"
             id="name"
             name="name"
             value={requester.name}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="age" className="block text-lg font-medium mb-2">Age</label>
+          <input
+            type="Number"
+            id="age"
+            name="age"
+            value={requester.age}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
             required
@@ -100,6 +128,34 @@ const RequestBlood = () => {
             id="location"
             name="location"
             value={requester.location}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+
+        {/* Address Input */}
+        <div>
+          <label htmlFor="address" className="block text-lg font-medium mb-2">Address</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            value={requester.address}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+
+        {/* Date Input */}
+        <div>
+          <label htmlFor="date" className="block text-lg font-medium mb-2">Date Needed</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={requester.date}
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
             required

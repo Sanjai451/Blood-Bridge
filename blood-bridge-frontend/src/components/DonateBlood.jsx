@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import EligibilityInfo from './subComponents/EligibilityInfo';
+import DonorInfo from './subComponents/DonorInfo';
+import axios from 'axios';
 
 const DonateBlood = () => {
   const [donor, setDonor] = useState({
@@ -7,16 +9,28 @@ const DonateBlood = () => {
     bloodGroup: '',
     age: '',
     contact: '',
-    location: ''
+    location: '',
+    type: 'blood-donor'
   });
 
   const handleChange = (e) => {
     setDonor({ ...donor, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+    try{
+        const response = await axios.post(`http://localhost:8000/requestBlood`,donor)
+        if(response.status == 200){
+          console.log(response)
+        }else{
+          alert('Not sent to Backend Try again!!');
+        }
+    }catch(err){
+      console.log(err)
+    }
+    alert('Your blood donation request has been submitted!');
     e.preventDefault();
-    // Handle form submission logic (e.g., send data to backend)
+    const response = await axios.post()
     console.log('Donor Details:', donor);
     alert('Thank you for your donation!');
   };
@@ -25,8 +39,11 @@ const DonateBlood = () => {
     <div className="max-w-lg mx-auto p-6">
       <h2 className="text-2xl font-semibold mb-6">Donate Blood</h2>
 
+
+      <DonorInfo/>
+
       {/* Form to collect donor details */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 my-6">
         {/* Name Input */}
         <div>
           <label htmlFor="name" className="block text-lg font-medium mb-2">Full Name</label>

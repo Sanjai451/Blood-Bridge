@@ -16,7 +16,8 @@ function App() {
     <Router> {/* Wrap the Routes inside the Router */}
     <Navbar/>
       <Routes>
-        <Route path='/' element={<CreateUser />} />
+        {/* <Route path='/' element={<CreateUser />} /> */}
+        <Route path='/' element={<Home/>} />
         <Route path='about' element={<About/>}/>
         <Route path='donateBlood' element={<DonateBlood/>}/>
         <Route path='requestBlood' element={<RequestBlood/>}/>

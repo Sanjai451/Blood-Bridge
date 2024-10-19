@@ -8,6 +8,7 @@ import getRouter from './routes/getRecords.js';
 import blank from './routes/blank.js';
 import cors from 'cors'
 import bodyParser from 'body-parser'
+import requestBlood from './routes/requestBlood.js';
 dotenv.config()
  
 
@@ -28,9 +29,10 @@ mongoose.connect(mongo_url)
 // Routes handling
 app.use('/',blank)
 app.use('/insert',insertRouter)
+app.use('/requestBlood',requestBlood)  //for the addition of the request in blood bank
 app.use('/get',getRouter)
 
-
+ 
 app.listen(port,()=>{
     console.log(`Server Running on port ${port}`)
 })

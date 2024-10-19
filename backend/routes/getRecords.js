@@ -8,10 +8,11 @@ dotenv.config()
 const getRouter = express.Router()
 
 // Routes handling
-getRouter.post('/',(req,res)=>{
+getRouter.get('/',(req,res)=>{
     console.log("inside getRouter")
     console.log(req.body)
     res.send("inside getRouter")
 })
+
 
 export default getRouter

@@ -5,6 +5,7 @@ import RequestBlood from './RequestBlood';
 import ViewBlood from './ViewBlood';
 import Details from './subComponents/Details';
 import HomeIntroProfile from './subComponents/HomeIntroProfile';
+import DonorInfo from './subComponents/DonorInfo';
 
 const Home = () => {
   const recentRequests = [
@@ -47,6 +48,9 @@ const Home = () => {
           </button>
         </Link>
       </div>
+
+      <DonorInfo/>
+      
     </div>
   );
 }
