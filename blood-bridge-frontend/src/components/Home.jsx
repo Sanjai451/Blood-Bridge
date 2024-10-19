@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import DonateBlood from './DonateBlood';
 import RequestBlood from './RequestBlood';
 import ViewBlood from './ViewBlood';
+import Details from './subComponents/Details';
+import HomeIntroProfile from './subComponents/HomeIntroProfile';
 
 const Home = () => {
   const recentRequests = [
@@ -12,23 +14,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="max-w-md mx-auto p-6">
-      {/* Profile Picture and Greeting */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center">
-          <Link to="/profile">
-            <img 
-              src="https://via.placeholder.com/100" 
-              alt="Profile" 
-              className="w-16 h-16 rounded-full" 
-            />
-          </Link>
-          <h2 className="ml-4 text-2xl font-semibold">Hello, Sanjai Kumar!</h2>
-        </div>
-      </div>
+    <div className="max-w-4xl mx-auto p-6">
 
-      {/* Buttons for Donation and Request */}
-      <div className="flex space-x-4 mb-6 mx-auto w-64 ">
+      {/* Profile Picture and Greeting */}
+      <HomeIntroProfile/>
+
+      {/* Buttons for Donation and Request
+      <div className="flex space-x-4 mb-6 max-w-2xl my-10 mx-auto w-64 ">
         <Link to="/donateBlood" element={DonateBlood}>
           <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
             Donate Blood
@@ -39,18 +31,14 @@ const Home = () => {
             Request Blood
           </button>
         </Link>
-      </div>
+      </div> */}
 
       {/* Recent Blood Requests */}
-      <div className="bg-gray-100 p-4 rounded shadow-md ">
+      <div className="bg-gray-100 my-10 p-4 rounded shadow-md ">
         <h3 className="text-lg font-semibold mb-4">Recent Blood Requests</h3>
         <ul>
           {recentRequests.map(request => (
-            <li key={request.id} className="mb-2">
-              <p>
-                <span className="font-bold">{request.name}</span> ({request.bloodGroup}) - {request.location}
-              </p>
-            </li>
+            <Details request={request}/>
           ))}
         </ul>
         <Link to="/viewBlood" element={<ViewBlood/>} >

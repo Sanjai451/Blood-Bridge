@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Details from './subComponents/Details';
 
 const ViewBlood = () => {
   const initialRequests = [
@@ -24,11 +25,12 @@ const ViewBlood = () => {
       {/* List of requests */}
       <ul className="space-y-4">
         {requests.map(request => (
-          <li key={request.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
-            <p className="text-lg font-semibold">{request.name}</p>
-            <p>Blood Group: <span className="font-bold">{request.bloodGroup}</span></p>
-            <p>Location: {request.location}</p>
-          </li>
+          // <li key={request.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
+          //   <p className="text-lg font-semibold">{request.name}</p>
+          //   <p>Blood Group: <span className="font-bold">{request.bloodGroup}</span></p>
+          //   <p>Location: {request.location}</p>
+          // </li>
+          <Details request={request}/>
         ))}
       </ul>
 

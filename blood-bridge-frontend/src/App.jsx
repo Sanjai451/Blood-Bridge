@@ -7,6 +7,7 @@ import RequestBlood from './components/RequestBlood';
 import ViewBlood from './components/ViewBlood';
 import Camps from './components/Camps';
 import Navbar from './components/Navbar';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='requestBlood' element={<RequestBlood/>}/>
         <Route path='viewBlood' element={<ViewBlood/>}/>
         <Route path='camps' element={<Camps/>} />
+        <Route path='profile' element={<Profile/>}/>
       </Routes>
     </Router>
     </>
