@@ -1,23 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import UserContext from '../context/UserContext';
+import axios from 'axios';
 
 const Profile = () => {
 
   const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+  const [recentsRequest,setRecentRequest] = useState(null)
 
   // console.log('Detail:',userDetails)
+  const fetchData = async()=>{
+    try {
+      const response = await axios.get('http://localhost:8000/get/6714cd023929dc24c9a8a551/getdata')
+      console.log(response.data[0])
+      setRecentRequest(response.data[0])
+    } catch (error) {
+      console.log(err)
+    }
+  }
 
-  const user = {
-    image: 'https://via.placeholder.com/150', // Placeholder image URL
-    requestHistory: [
-      { id: 1, date: '12 Sep 2024', bloodGroup: 'A+', status: 'Completed' },
-      { id: 2, date: '25 Aug 2024', bloodGroup: 'O-', status: 'Pending' },
-    ],
-    donationHistory: [
-      { id: 1, date: '10 Oct 2024', bloodGroup: 'O+', status: 'Completed' },
-      { id: 2, date: '5 Jul 2024', bloodGroup: 'B+', status: 'Completed' },
-    ],
-  };
+  useEffect(()=>{
+    fetchData()
+  },[])
 
   return (
     <div className="max-w-4xl mx-auto p-8">
@@ -48,36 +51,16 @@ const Profile = () => {
         {/* Request History */}
         <div>
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Request History</h2>
-          {user.requestHistory.length > 0 ? (
+          
             <ul className="space-y-4">
-              {user.requestHistory.map(request => (
-                <li key={request.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
-                  <p className="text-lg font-semibold">Blood Group: {request.bloodGroup}</p>
-                  <p>Date: {request.date}</p>
+                <li key={recentsRequest.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
+                  <p className="text-lg font-semibold">Blood Group: {recentsRequest.bloodGroup}</p>
+                  <p>Date: {recentsRequest.PostedOn}</p>
+                  <p>Location: {recentsRequest.location}</p>
+                  <p>Required Units: {recentsRequest.requiredUnits}</p>
                 </li>
-              ))}
             </ul>
-          ) : (
-            <p className="text-gray-500">No requests made yet.</p>
-          )}
-        </div>
-
-        {/* Donation History */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Donation History</h2>
-          {user.donationHistory.length > 0 ? (
-            <ul className="space-y-4">
-              {user.donationHistory.map(donation => (
-                <li key={donation.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
-                  <p className="text-lg font-semibold">Blood Group: {donation.bloodGroup}</p>
-                  <p>Date: {donation.date}</p>
-                  <p>Status: <span className="font-bold text-green-500">{donation.status}</span></p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500">No donations made yet.</p>
-          )}
+          
         </div>
       </div>
     </div>

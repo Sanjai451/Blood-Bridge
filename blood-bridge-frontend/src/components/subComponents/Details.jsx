@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Details = ({request}) => {
 
-  // console.log(request)
+  console.log(request)
 
   return (
     <div>
@@ -29,15 +29,6 @@ const Details = ({request}) => {
         <div className="mt-4">
             <p className="text-gray-700">Location: <span className="font-semibold">{request.location}</span></p>
             <p className="mb-5 text-gray-700">Posted on: <span className="font-semibold">{request.PostedOn}</span></p>
-            {/* <Link 
-              className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600"
-              to={{
-                pathname: '/about',  // About page path
-                state: { request }      // Passing the user object through state
-              }}
-            >
-              View Details
-          </Link>        */}
           <Link
               className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600"
               to="/about" // Define the path to your about page

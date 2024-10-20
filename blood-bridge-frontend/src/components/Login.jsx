@@ -29,7 +29,7 @@ const Login = () => {
         password:password
       })
       //get the whole user data
-      const response = await axios.get(`http://localhost:8000/get/sanjaikumar451@gmail.com`) 
+      const response = await axios.get(`http://localhost:8000/get/${email}`) 
   
       console.log(response.data[0])
       setUserDetails(response.data[0])
