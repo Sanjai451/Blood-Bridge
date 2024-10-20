@@ -17,6 +17,12 @@
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB (with Mongoose)
 
+## Future Development
+1. Implement JWT
+2. Enhance UI
+3. Resove bug while exiting the page
+
+
 ## Installation and Setup
 
 1. **Clone the repository**
