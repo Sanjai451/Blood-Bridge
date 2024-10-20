@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DonateBlood from './DonateBlood';
 import RequestBlood from './RequestBlood';
@@ -7,19 +7,19 @@ import Details from './subComponents/Details';
 import HomeIntroProfile from './subComponents/HomeIntroProfile';
 import DonorInfo from './subComponents/DonorInfo';
 import axios from 'axios';
+import UserContext from '../context/UserContext';
 
 const Home = () => {
-  // const recentRequests = [
-  //   { id: 1, name: 'John Doe', bloodGroup: 'O+', location: 'Chennai' },
-  //   { id: 2, name: 'Jane Smith', bloodGroup: 'A-', location: 'Bangalore' },
-  //   { id: 3, name: 'Mike Johnson', bloodGroup: 'B+', location: 'Delhi' }
-  // ];
+
+  // const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+
+  // console.log('Detail:',userDetails)
 
   const [requestPost,setRequestPost] = useState([])
   
   useEffect(()=>{
     fetchData()
-  },[requestPost])
+  },[])
 
   const fetchData = async()=>{
     try {

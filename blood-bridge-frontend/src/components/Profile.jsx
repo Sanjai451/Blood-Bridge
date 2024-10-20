@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../context/UserContext';
 
 const Profile = () => {
+
+  const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+
+  // console.log('Detail:',userDetails)
+
   const user = {
-    name: 'John Doe',
-    bloodGroup: 'O+',
-    location: 'Chennai, India',
-    email: 'johndoe@example.com',
-    phone: '+91 98765 43210',
     image: 'https://via.placeholder.com/150', // Placeholder image URL
     requestHistory: [
       { id: 1, date: '12 Sep 2024', bloodGroup: 'A+', status: 'Completed' },
@@ -28,14 +29,14 @@ const Profile = () => {
           className="w-32 h-32 rounded-full shadow-md mr-6"
         />
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">{user.name}</h1>
-          <p className="text-lg text-gray-600">Blood Group: <span className="font-bold">{user.bloodGroup}</span></p>
-          <p className="text-lg text-gray-600">Location: {user.location}</p>
+          <h1 className="text-2xl font-semibold text-gray-900">{userDetails.name.toUpperCase()}</h1>
+          <p className="text-lg text-gray-600">Blood Group: <span className="font-bold">{userDetails.bloodGroup}</span></p>
+          <p className="text-lg text-gray-600">Location: {userDetails.city}</p>
           <div className="mt-4 flex space-x-4">
-            <a href={`mailto:${user.email}`} className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+            <a href={`mailto:${userDetails.email}`} className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
               Email
             </a>
-            <a href={`tel:${user.phone}`} className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">
+            <a href={`tel:${userDetails.mobile}`} className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">
               Call
             </a>
           </div>
@@ -53,7 +54,6 @@ const Profile = () => {
                 <li key={request.id} className="bg-gray-100 p-4 rounded-lg shadow-md">
                   <p className="text-lg font-semibold">Blood Group: {request.bloodGroup}</p>
                   <p>Date: {request.date}</p>
-                  <p>Status: <span className={`font-bold ${request.status === 'Completed' ? 'text-green-500' : 'text-yellow-500'}`}>{request.status}</span></p>
                 </li>
               ))}
             </ul>

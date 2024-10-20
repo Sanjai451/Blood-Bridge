@@ -9,24 +9,31 @@ import Camps from './components/Camps';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import CreateUser from './components/CreateUser';
+import Login from './components/Login';
+import { UserProvider } from './context/UserContext';
 
 function App() {
   return (
     <>
-    <Router> {/* Wrap the Routes inside the Router */}
-    <Navbar/>
-      <Routes>
-        {/* <Route path='/' element={<CreateUser />} /> */}
-        <Route path='/' element={<Home/>} />
-        <Route path='about' element={<About/>}/>
-        <Route path='donateBlood' element={<DonateBlood/>}/>
-        <Route path='requestBlood' element={<RequestBlood/>}/>
-        <Route path='viewBlood' element={<ViewBlood/>}/>
-        <Route path='camps' element={<Camps/>} />
-        <Route path='profile' element={<Profile/>}/>
-        <Route path='camps' element={<Camps/>}/>
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router> 
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<Login/>} />
+          <Route path='/home' element={<Home/>} />
+          <Route path='/create' element={<CreateUser/>} />
+          <Route path='about' element={<About/>}/>
+          <Route path='donateBlood' element={<DonateBlood/>}/>
+          <Route path='requestBlood' element={<RequestBlood/>}/>
+          <Route path='viewBlood' element={<ViewBlood/>}/>
+          <Route path='camps' element={<Camps/>} />
+          <Route path='profile' element={<Profile/>}/>
+          <Route path='camps' element={<Camps/>}/>
+          <Route path='about' element={<About/>}/>
+        </Routes>
+      </Router>
+    </UserProvider>
+
     <div className="text-center my-5">
     <a 
       href="https://your-portfolio-link.com" 

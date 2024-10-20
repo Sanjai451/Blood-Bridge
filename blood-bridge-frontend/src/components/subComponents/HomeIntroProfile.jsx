@@ -1,6 +1,13 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import UserContext from '../../context/UserContext';
 
 const HomeIntroProfile = () => {
+
+  const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+
+  console.log(userDetails.name)
+
   return (
     <div className="relative min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-between px-4" style={{ backgroundImage: "url('https://i.pinimg.com/564x/54/73/64/5473647fadac758c01abf81fb641a427.jpg')" }}>
       
@@ -8,7 +15,7 @@ const HomeIntroProfile = () => {
       <div>
         <div className="absolute top-5 left-5">
             <Link to="/profile">
-            <h2 className="text-5xl font-bold text-red-500">Hello, Sanjai Kumar!</h2>
+            <h2 className="text-5xl font-bold text-red-500" >Hello {userDetails.name.toUpperCase()}👋</h2>
             </Link>
         </div>
         

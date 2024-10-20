@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 const Details = ({request}) => {
 
@@ -27,11 +28,24 @@ const Details = ({request}) => {
         </div>
         <div className="mt-4">
             <p className="text-gray-700">Location: <span className="font-semibold">{request.location}</span></p>
-            <p className="text-gray-700">Posted on: <span className="font-semibold">{request.PostedOn}</span></p>
-            <button className="mt-4 w-full bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600">
-            View Details
-            </button>
-        </div>
+            <p className="mb-5 text-gray-700">Posted on: <span className="font-semibold">{request.PostedOn}</span></p>
+            {/* <Link 
+              className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600"
+              to={{
+                pathname: '/about',  // About page path
+                state: { request }      // Passing the user object through state
+              }}
+            >
+              View Details
+          </Link>        */}
+          <Link
+              className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600"
+              to="/about" // Define the path to your about page
+              state={{ request }} // Pass request data through the state prop
+            >
+              View Details
+            </Link>
+          </div>
         </li>
 
     </div>

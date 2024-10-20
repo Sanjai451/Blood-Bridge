@@ -1,7 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import UserContext from '../context/UserContext';
 
 const RequestBlood = () => {
+
+  const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+
+  console.log(userDetails._id)
+
+
   const [requester, setRequester] = useState({
     name: '', // New field for contact person's name
     bloodGroup: '',
@@ -11,7 +18,8 @@ const RequestBlood = () => {
     location: '',
     address: '', // New field for address
     date: '', // New field for date
-    type: 'Blood-request'
+    type: 'Blood-request',
+    user : userDetails._id
   });
 
   const handleChange = (e) => {
@@ -26,6 +34,18 @@ const RequestBlood = () => {
         const response = await axios.post(`http://localhost:8000/requestBlood`,requester)
         if(response.status == 200){
           console.log(response)
+          setRequester({
+            name: '', // New field for contact person's name
+            bloodGroup: '',
+            age : 0,
+            requiredUnits: '',
+            contact: '',
+            location: '',
+            address: '', // New field for address
+            date: '', // New field for date
+            type: '',
+            user : ''
+          })
         }else{
           alert('Not sent to Backend Try again!!');
         }

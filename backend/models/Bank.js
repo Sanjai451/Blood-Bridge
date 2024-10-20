@@ -28,6 +28,10 @@ const BloodBankSchema = new mongoose.Schema({
     default: new Date().toLocaleString(),
     type : String,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,  // Use Types.ObjectId
+    ref: "User",
+  },
 });
 
 export const Bank = mongoose.model("Bank", BloodBankSchema);

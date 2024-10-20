@@ -8,7 +8,7 @@ const ViewBlood = () => {
   
   useEffect(()=>{
     fetchData()
-  },[requestPost])
+  },[])
 
   const fetchData = async()=>{
     try {

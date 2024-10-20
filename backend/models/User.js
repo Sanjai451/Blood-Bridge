@@ -36,10 +36,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  history: {
+  userRequest: [{
     type: mongoose.Schema.Types.ObjectId,  // Use Types.ObjectId
     ref: "Bank",
-  },
+  }],
 });
 
 export const User = mongoose.model("User", UserSchema);

@@ -1,14 +1,14 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
-import { Bank } from './models/Bank.js';
-import { User } from './models/User.js';
 import insertRouter from './routes/insertRecords.js';
 import getRouter from './routes/getRecords.js';
 import blank from './routes/blank.js';
 import cors from 'cors'
-import bodyParser from 'body-parser'
 import requestBlood from './routes/requestBlood.js';
+import userRouter from './routes/userDetails.js';
+import bankRouter from './routes/bankDetails.js';
+import loginRouter from './routes/loginCheck.js';
 dotenv.config()
  
 
@@ -31,9 +31,16 @@ app.use('/',blank)
 app.use('/insert',insertRouter)
 app.use('/requestBlood',requestBlood)  //for the addition of the request in blood bank
 app.use('/get',getRouter)
+app.use('/user',userRouter) 
+app.use('/bank',bankRouter) 
+app.use('/login/',loginRouter) 
 
  
 app.listen(port,()=>{
     console.log(`Server Running on port ${port}`)
 })
 
+
+
+//http://localhost:8000/bank/6713b860209ec37993279585
+//http://localhost:8000/user/67139383926dc09753548112
