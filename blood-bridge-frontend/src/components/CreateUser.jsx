@@ -1,7 +1,9 @@
 import React, { useDebugValue, useState } from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const CreateUser = () => {
+    const navigate = useNavigate();
     // State to hold form data
     const [userData, setUserData] = useState({
         name: '',
@@ -43,6 +45,8 @@ const CreateUser = () => {
                     address: '',
                     password: '',
                 });
+                navigate('/');
+
             }else{
                 alert('Failed to create user. Please try again.');
             }         

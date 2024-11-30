@@ -1,0 +1,45 @@
+/* Container styles */
+.loading_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #ffe5e5; /* Light red background */
+  }
+  
+  /* Spinner styles */
+  .loading_spinner {
+    width: 120px;
+    height: 120px;
+    border: 8px dashed #e3342f; /* Red dashed border */
+    border-radius: 50%;
+    animation: loading_spin 1.5s linear infinite;
+  }
+  
+  /* Animation for spinner */
+  @keyframes loading_spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Loading text styles */
+  .loading_text {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #b91c1c; /* Darker red */
+  }
+  
+  /* Subtext styles */
+  .loading_subtext {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #991b1b; /* Slightly lighter red */
+    text-align: center;
+  }
+  

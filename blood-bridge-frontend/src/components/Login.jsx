@@ -32,7 +32,9 @@ const Login = () => {
       const response = await axios.get(`http://localhost:8000/get/${email}`) 
   
       console.log(response.data[0])
-      setUserDetails(response.data[0])
+      setUserDetails(response.data[0])              //setting to state
+      
+      sessionStorage.setItem('loginDetail',JSON.stringify(response.data[0]))//using local storage
       
       navigate('/home');
     }else if(response.data.code == 'ERR_BAD_REQUEST'){

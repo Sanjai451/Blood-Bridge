@@ -11,10 +11,9 @@ import bankRouter from './routes/bankDetails.js';
 import loginRouter from './routes/loginCheck.js';
 dotenv.config()
  
-
- 
 const port = process.env.PORT || 8000;
-const mongo_url = process.env.MONGO_URL
+// const mongo_url = process.env.MONGO_URL
+const mongo_url = 'mongodb://localhost:27017/BloodBridgeMERN'
 const app = express()
 app.use(cors())
 // app.use(bodyParser.json())

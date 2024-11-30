@@ -11,7 +11,7 @@ import UserContext from '../context/UserContext';
 
 const Home = () => {
 
-  // const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+  const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
 
   // console.log('Detail:',userDetails)
 
@@ -19,12 +19,15 @@ const Home = () => {
   
   useEffect(()=>{
     fetchData()
+    setUserDetails(JSON.parse(sessionStorage.getItem('loginDetail')))
+    console.log(userDetails)
+    console.log(JSON.parse(sessionStorage.getItem('loginDetail')))
   },[])
 
   const fetchData = async()=>{
     try {
       const response = await axios.get('http://localhost:8000/get')
-      // console.log(response.data)
+      console.log(response.data)
       setRequestPost(response.data)
       // console.log(requestPost)
     } catch (error) {

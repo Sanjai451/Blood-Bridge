@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import UserContext from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const RequestBlood = () => {
 
   const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
+
+  const navigate = useNavigate()
 
   console.log(userDetails._id)
 
@@ -53,6 +56,9 @@ const RequestBlood = () => {
       console.log(err)
     }
     alert('Your blood request has been submitted!');
+    // console.log('brfore ')
+    navigate('/home');
+    // console.log("after")
   };
 
   return (

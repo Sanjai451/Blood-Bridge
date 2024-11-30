@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import EligibilityInfo from './subComponents/EligibilityInfo';
 import DonorInfo from './subComponents/DonorInfo';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../App.css'
 
 const DonateBlood = () => {
+  const navigate = useNavigate()
   const [donor, setDonor] = useState({
     name: '',
     bloodGroup: '',
@@ -18,21 +23,24 @@ const DonateBlood = () => {
   };
 
   const handleSubmit = async(e) => {
+    e.preventDefault();
     try{
         const response = await axios.post(`http://localhost:8000/requestBlood`,donor)
         if(response.status == 200){
           console.log(response)
+          toast('This is a toast.')          
         }else{
           alert('Not sent to Backend Try again!!');
         }
     }catch(err){
       console.log(err)
     }
-    alert('Your blood donation request has been submitted!');
-    e.preventDefault();
-    const response = await axios.post()
-    console.log('Donor Details:', donor);
-    alert('Thank you for your donation!');
+    // console.log("before")
+    navigate('/home');
+    // console.log('after')
+    // const response = await axios.post()
+    // console.log('Donor Details:', donor);
+    // alert('Thank you for your donation!');
   };
 
   return (
