@@ -15,6 +15,7 @@ const DonateBlood = () => {
     age: '',
     contact: '',
     location: '',
+    infection: '',
     type: 'blood-donor'
   });
 
@@ -45,11 +46,12 @@ const DonateBlood = () => {
 
   return (
     <div className="max-w-lg mx-auto p-6">
+      
+
+
+      <EligibilityInfo/>
+      
       <h2 className="text-2xl font-semibold mb-6">Donate Blood</h2>
-
-
-      <DonorInfo/>
-
       {/* Form to collect donor details */}
       <form onSubmit={handleSubmit} className="space-y-6 my-6">
         {/* Name Input */}
@@ -142,7 +144,9 @@ const DonateBlood = () => {
           </button>
         </div>
       </form>
-      <EligibilityInfo/>
+
+      <DonorInfo/>
+
     </div>
   );
 };

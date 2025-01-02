@@ -9,6 +9,7 @@ import requestBlood from './routes/requestBlood.js';
 import userRouter from './routes/userDetails.js';
 import bankRouter from './routes/bankDetails.js';
 import loginRouter from './routes/loginCheck.js';
+import deletRoute from './routes/deleteRoute.js';
 dotenv.config()
  
 const port = process.env.PORT || 8000;
@@ -19,6 +20,8 @@ app.use(cors())
 // app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded())
 app.use(express.json())
+
+app.use(express.static( '/public'));
 
 //Connect mongodb
 mongoose.connect(mongo_url)
@@ -33,6 +36,7 @@ app.use('/get',getRouter)
 app.use('/user',userRouter) 
 app.use('/bank',bankRouter) 
 app.use('/login/',loginRouter) 
+app.use('/delete/',deletRoute) 
 
  
 app.listen(port,()=>{

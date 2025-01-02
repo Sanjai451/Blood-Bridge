@@ -12,7 +12,7 @@ const Login = () => {
 
   const {userLoginDetail,setUserLoginDetail,userDetails,setUserDetails} = useContext(UserContext)
 
-  console.log(userLoginDetail)
+  // console.log(userLoginDetail)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -20,27 +20,30 @@ const Login = () => {
     console.log('Email:', email);
     console.log('Password:', password);
     // Redirect to main page after "authentication"
-    const response = await axios.get(`http://localhost:8000/login/${email}/${password}`)
-    console.log(response)
-    if(response.status === 200){
-
-      setUserLoginDetail({
-        email:email,
-        password:password
-      })
-      //get the whole user data
-      const response = await axios.get(`http://localhost:8000/get/${email}`) 
-  
-      console.log(response.data[0])
-      setUserDetails(response.data[0])              //setting to state
-      
-      sessionStorage.setItem('loginDetail',JSON.stringify(response.data[0]))//using local storage
-      
-      navigate('/home');
-    }else if(response.data.code == 'ERR_BAD_REQUEST'){
+    try {
+      const response = await axios.get(`http://localhost:8000/login/${email}/${password}`)
+      console.log('res=>',response)
+      if(response.status === 200){
+        setUserLoginDetail({
+          email:email,
+          password:password
+        })
+        //get the whole user data
+        const response = await axios.get(`http://localhost:8000/get/${email}`) 
+    
+        console.log(response.data[0])
+        setUserDetails(response.data[0])              //setting to state
+        
+        sessionStorage.setItem('loginDetail',JSON.stringify(response.data[0]))//using session storage
+        
+        navigate('/home');
+      }else if(response.status === 401){
+        alert('Invalid Email and Password')
+      }
+    } catch (error) {
       alert('Invalid Email and Password')
     }
-     
+    
   };
 
   return (

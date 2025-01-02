@@ -4,24 +4,15 @@ import { Bank } from '../models/Bank.js';  // Path to your Bank model
 
 const loginRouter = express.Router();
 
-
-const users = [
-    {
-      email: 'sanjaikumar451@gmail.com',
-      password: '123', // In a real application, passwords should be hashed!
-    },
-  ];
-
-
 loginRouter.get('/:email/:password', async (req, res) => {
     const email = req.params.email;
     const password = req.params.password
 
-    console.log(email,password)
+    // console.log(email,password)
     if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required.' });
     }
-    console.log('inside the login router get')
+    // console.log('inside the login router get')
 
     const user_Data = await User.find({email:email});
 
@@ -35,6 +26,7 @@ loginRouter.get('/:email/:password', async (req, res) => {
             } else {
                 // Invalid credentials
                 console.log("invalid user id password")
+                // return res.json({ message: 'Invalid email or password.' });
                 return res.status(401).json({ message: 'Invalid email or password.' });
             }
     } catch (error) {

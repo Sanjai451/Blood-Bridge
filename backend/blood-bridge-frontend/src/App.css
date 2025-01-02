@@ -43,3 +43,14 @@
     text-align: center;
   }
   
+  img{
+    border: 20px solid rgb(134, 133, 133);
+  }
+  .custom_style{
+    width: 80vw;
+    text-align: center;
+    background-color: rgb(247, 138, 138);
+    padding: 20px;
+    margin-left: 10vw;
+    margin: 10px 10vw 10px 10vw;
+  }
