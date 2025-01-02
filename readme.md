@@ -31,5 +31,49 @@
    git clone https://github.com/your-username/blood-bridge.git
    cd blood-bridge
 
+## Demo Screenshots
 
-![alt text](<Screenshot 2024-10-20 154504.png>) ![alt text](<Screenshot 2024-10-20 154323.png>) ![alt text](<Screenshot 2024-10-20 154340.png>) ![alt text](<Screenshot 2024-10-20 154400.png>) ![alt text](<Screenshot 2024-10-20 154439.png>) ![alt text](<Screenshot 2024-10-20 154449.png>)
+Below are some screenshots showcasing the application's functionality:
+
+### Home Page  View
+![Home Page ](<Screenshot 2024-10-20 154504.png>)
+
+### Login Form
+![Login Form](<Screenshot 2024-10-20 154323.png>)
+
+### Home Page
+![Home page](<Screenshot 2024-10-20 154340.png>)
+
+### New Requests
+![New Requests](<Screenshot 2024-10-20 154400.png>)
+
+### Adding Request Details
+![Adding Request Details](<Screenshot 2024-10-20 154439.png>)
+
+### Deleting a Request
+![Deleting a Request](<Screenshot 2024-10-20 154449.png>)
+
+### Admin DashBoard 
+![General Application View](image.png)
+
+---
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this project under the terms of the license.
+
+---
+
+## Contributing
+
+We welcome contributions to enhance the application! To contribute:
+
+1. **Fork the repository:**  
+   Click the "Fork" button on the top-right corner of this repository.
+
+2. **Clone the repository:**  
+   ```bash
+   git clone https://github.com/<your-username>/bloodbridge.git
+   cd bloodbridge
