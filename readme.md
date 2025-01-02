@@ -36,25 +36,25 @@
 Below are some screenshots showcasing the application's functionality:
 
 ### Home Page  View
-![Home Page ](<Screenshot 2024-10-20 154504.png>)
+![Home Page ](<./screenshots/Screenshot 2024-10-20 154504.png>)
 
 ### Login Form
-![Login Form](<Screenshot 2024-10-20 154323.png>)
+![Login Form](<./screenshots/Screenshot 2024-10-20 154323.png>)
 
 ### Home Page
-![Home page](<Screenshot 2024-10-20 154340.png>)
+![Home page](<./screenshots/Screenshot 2024-10-20 154340.png>)
 
 ### New Requests
-![New Requests](<Screenshot 2024-10-20 154400.png>)
+![New Requests](<./screenshots/Screenshot 2024-10-20 154400.png>)
 
 ### Adding Request Details
-![Adding Request Details](<Screenshot 2024-10-20 154439.png>)
+![Adding Request Details](<./screenshots/Screenshot 2024-10-20 154439.png>)
 
 ### Deleting a Request
-![Deleting a Request](<Screenshot 2024-10-20 154449.png>)
+![Deleting a Request](<./screenshots/Screenshot 2024-10-20 154449.png>)
 
 ### Admin DashBoard 
-![General Application View](image.png)
+![General Application View](./screenshots/image.png)
 
 ---
 
